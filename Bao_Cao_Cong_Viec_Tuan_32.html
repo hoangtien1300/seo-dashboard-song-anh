@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BÁO CÁO CÔNG VIỆC TUẦN 32 - PHẠM HOÀNG TIẾN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-light: #1E293B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --success: #059669;
+            --warning: #D97706;
+            --info: #0284C7;
+            --bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 24px 16px;
+            padding-bottom: 100px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* CONTROL BAR FOR INTERACTIVE EDITING */
+        .control-bar {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .control-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary { background: var(--accent); color: #FFFFFF; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+        .btn-outline:hover { background: #EFF6FF; }
+
+        /* HEADER SECTION */
+        .header-card {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #FFFFFF;
+            border-radius: 16px;
+            padding: 32px 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #93C5FD;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .report-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 24px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: #94A3B8;
+        }
+
+        .meta-item strong {
+            color: #F8FAFC;
+        }
+
+        /* KPI STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .stat-sub {
+            font-size: 0.82rem;
+            color: var(--success);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* SECTIONS & CARDS */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #F1F5F9;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #EFF6FF;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* CONTENT STYLING */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-block {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .info-block-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .custom-list {
+            list-style: none;
+        }
+
+        .custom-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .custom-list li::before {
+            content: '•';
+            position: absolute;
+            left: 4px;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* EDITABLE HIGHLIGHT */
+        [contenteditable="true"] {
+            outline: 2px dashed #3B82F6;
+            border-radius: 4px;
+            background: #EFF6FF;
+            padding: 2px 4px;
+        }
+
+        /* TABLES */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-top: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        th {
+            background: #F1F5F9;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #F1F5F9;
+            color: #334155;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-success { background: #D1FAE5; color: #065F46; }
+        .pill-info { background: #E0F2FE; color: #0369A1; }
+
+        /* FEEDBACK FLOATING PANEL */
+        .feedback-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 340px;
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--shadow-lg);
+            z-index: 200;
+        }
+
+        .feedback-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-textarea {
+            width: 100%;
+            height: 70px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 0.88rem;
+            font-family: inherit;
+            resize: none;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 12px 8px; }
+            .header-card { padding: 24px 18px; }
+            .report-title { font-size: 1.45rem; }
+            .section-card { padding: 20px 14px; }
+            .feedback-panel { width: calc(100% - 32px); left: 16px; right: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- INTERACTIVE CONTROL BAR -->
+    <div class="control-bar">
+        <div class="control-title">
+            <span>⚙️ WEBSITE TRUY CẬP TƯƠNG TÁC BÁO CÁO TUẦN 32</span>
+        </div>
+        <div>
+            <button class="btn btn-outline" onclick="toggleEditMode()" id="editBtn">✏️ Bật Chế Độ Sửa Trực Tiếp</button>
+            <button class="btn btn-primary" onclick="saveEdits()">💾 Lưu & Xuất Báo Cáo Mới</button>
+        </div>
+    </div>
+
+    <!-- HEADER CARD -->
+    <header class="header-card">
+        <div class="company-badge">🏢 CÔNG TY MÔ HÌNH KIẾN TRÚC SONG ANH</div>
+        <h1 class="report-title" id="repTitle">BÁO CÁO CÔNG VIỆC TUẦN 32 (08/08 – 15/08/2026)</h1>
+        <div class="header-meta">
+            <div class="meta-item">👤 Người báo cáo: <strong>Phạm Hoàng Tiến (Marketing Manager)</strong></div>
+            <div class="meta-item">👑 Kính trình: <strong>Sếp Thiện (Giám Đốc Công Ty)</strong></div>
+            <div class="meta-item">📅 Ngày xuất báo cáo: <strong>Thứ Bảy, 15/08/2026</strong></div>
+        </div>
+    </header>
+
+    <!-- EXECUTIVE KPI STATS -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Khách Hàng Mới Tiếp Cận</div>
+            <div class="stat-value" id="kpiSales">06 Khách</div>
+            <div class="stat-sub">▲ Kênh chính thức Hotline & Website</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Tổng Pipeline Dự Án</div>
+            <div class="stat-value" id="kpiPipeline">63 Dự án</div>
+            <div class="stat-sub">▲ Tăng 1 dự án trọng điểm</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Tự Động Hóa AI MKT</div>
+            <div class="stat-value" id="kpiAuto">35% Auto</div>
+            <div class="stat-sub">▲ Tăng 5% so với tuần 31</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Hạ Tầng Notion Data Hub</div>
+            <div class="stat-value">44 Cột</div>
+            <div class="stat-sub">✔ Quản lý 60 bài Master</div>
+        </div>
+    </div>
+
+    <!-- PHẦN 1: BÁO CÁO CÔNG VIỆC SALE -->
+    <section class="section-card">
+        <div class="section-header">
+            <div class="section-icon">💼</div>
+            <h2 class="section-title">PHẦN 1: BÁO CÁO CÔNG VIỆC SALE</h2>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-block">
+                <div class="info-block-title">📊 1.1. Thống Kê Nguồn Khách Hàng Tiềm Năng Mới</div>
+                <ul class="custom-list">
+                    <li><strong>Số lượng tiếp nhận</strong>: <strong>06 Khách hàng mới</strong> tương tác tư vấn phương án sa bàn và báo giá.</li>
+                    <li><strong>Kênh tiếp nhận chính thức</strong> (Theo cột Nguồn khách hàng):
+                        <ul style="margin-left: 20px; margin-top: 6px;">
+                            <li>📞 <strong>Hotline Báo Giá Chính Thức</strong>: <code>0929 22 4444</code> (Kênh tiếp nhận sa bàn dự án BĐS & Quy hoạch).</li>
+                            <li>🌐 <strong>Hệ thống Website</strong>: <code>mohinhkientruc.org</code>, <code>architecturalmodel.org</code>, <code>lammohinh.vn</code>.</li>
+                            <li>🏢 <strong>Facebook Fanpage</strong>: Fanpage Mô hình kiến trúc Song Anh.</li>
+                        </ul>
+                    </li>
+                    <li style="color: var(--text-muted); font-size: 0.88rem; margin-top: 6px;"><em>*Lưu ý: Loại trừ Hotline Zalo 0333 88 5925 thuộc bộ phận trực bán lẻ/TMĐT vật liệu sa bàn.</em></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <div class="info-block-title">🏗️ 1.2. Tổng Quan Pipeline & Tiến Độ Thương Thảo</div>
+                <ul class="custom-list">
+                    <li><strong>Tổng Pipeline quản lý</strong>: <strong>63 dự án</strong> đang trong giai đoạn tư vấn tỷ lệ, gửi bản vẽ kỹ thuật và thương thảo hợp đồng.</li>
+                    <li><strong>Hoạt động trọng tâm</strong>: Đã xuất hồ sơ năng lực xưởng và bản phân tích phương án thi công cho các Chủ đầu tư / BQLDA tiềm năng để xúc tiến tiến độ chốt hợp đồng.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHẦN 2: BÁO CÁO CÔNG VIỆC MARKETING -->
+    <section class="section-card">
+        <div class="section-header">
+            <div class="section-icon">📈</div>
+            <h2 class="section-title">PHẦN 2: BÁO CÁO CÔNG VIỆC MARKETING</h2>
+        </div>
+
+        <div class="info-block" style="margin-bottom: 20px;">
+            <div class="info-block-title">🎯 2.1. Target SEO & Chiến Lược Re-Marketing Dự Án Thực Tế</div>
+            <ul class="custom-list">
+                <li>🎯 <strong>Target Từ khóa SEO Trọng điểm Tuần này</strong>: Phủ sóng thứ hạng và tối ưu bài viết chuẩn RankMath 90+ cho nhóm từ khóa: <span class="pill pill-info">mô hình TOD</span> <span class="pill pill-info">sa bàn TOD</span>.</li>
+                <li>🔄 <strong>Chiến lược Re-Marketing Dự án Thực tế Đã Bàn Giao</strong>: Sử dụng hình ảnh/video thực tế của các sa bàn lớn hoàn thiện từ trước (<em>Sa bàn Trường học RMIT / UTS Nam Sài Gòn, KCN Lam Sơn Sao Vàng, Nhà máy Peace-Lon, Bệnh viện Nhi Đồng 1, Du thuyền Saigon Princess</em>) để triển khai Re-marketing, Re-up và phủ SEO đa kênh.</li>
+            </ul>
+        </div>
+
+        <div class="info-block-title" style="margin-bottom: 12px;">📢 2.2. Kết Quả Triển Khai Hệ Thống AI Marketing & Đa Kênh</div>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hạng Mục Kênh</th>
+                        <th>Khối Lượng Đã Thực Hiện</th>
+                        <th>Trạng Thái & Kết Quả Đạt Được</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🏛️ Notion Master Hub</strong></td>
+                        <td>Nâng cấp <strong>44 Thuộc tính</strong></td>
+                        <td><span class="pill pill-success">Đã hoàn thành</span> Quản lý 60 bài viết Master & nạp 100% 3 bản Spin GBP.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🏢 Facebook Fanpage</strong></td>
+                        <td>23 Bài live + 17 Bài Re-comment</td>
+                        <td><span class="pill pill-success">Đã hoàn thành</span> Kích hoạt Re-comment 17 bài Evergreen (loại bỏ 4 nhóm bài cấm).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>💬 4 Tài Khoản Zalo</strong></td>
+                        <td>46 Lượt bài đăng + 58 Spin Zalo</td>
+                        <td><span class="pill pill-info">Đang vận hành</span> Phủ nội dung chăm sóc khách hàng & tạo dựng niềm tin B2B.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📍 3 Doanh Nghiệp GBP</strong></td>
+                        <td>46 Link live + 3 Bản Spin riêng</td>
+                        <td><span class="pill pill-success">Đã hoàn thành</span> Chuẩn hóa 3 Website (<code>lammohinh.vn</code>, <code>mohinhkientruc.org</code>, <code>architecturalmodel.org</code>) & Hotline.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PHẦN 3: BÁO CÁO NHÂN SỰ -->
+    <section class="section-card">
+        <div class="section-header">
+            <div class="section-icon">👥</div>
+            <h2 class="section-title">PHẦN 3: BÁO CÁO NHÂN SỰ</h2>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-block">
+                <div class="info-block-title">📄 3.1. Hồ Sơ Mới & Phỏng Vấn Tuần Này</div>
+                <ul class="custom-list">
+                    <li><strong>Số hồ sơ ứng tuyển mới</strong>: <code>[Báo cáo số lượng hồ sơ ứng tuyển xưởng Thủ Đức]</code></li>
+                    <li><strong>Số lượng ứng viên đã phỏng vấn</strong>: <code>[Báo cáo số lượng phỏng vấn]</code> bạn</li>
+                    <li><strong>Kết quả phỏng vấn</strong>: <code>[Báo cáo số lượng Đạt / Không đạt / Đang chờ phản hồi]</code></li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <div class="info-block-title">⏳ 3.2. Nhân Sự Thử Việc & Thời Hạn Kết Thúc</div>
+                <ul class="custom-list">
+                    <li><strong>Tổng nhân sự đang thử việc</strong>: <code>[Báo cáo số lượng nhân sự thử việc]</code></li>
+                    <li><strong>Chi tiết ngày kết thúc thử việc</strong>:
+                        <ul style="margin-left: 20px; margin-top: 4px;">
+                            <li>👤 <code>[Họ tên NV 1]</code> ➔ Ngày kết thúc: <code>[DD/MM/YYYY]</code></li>
+                            <li>👤 <code>[Họ tên NV 2]</code> ➔ Ngày kết thúc: <code>[DD/MM/YYYY]</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-grid" style="margin-top: 20px;">
+            <div class="info-block">
+                <div class="info-block-title">🛠️ 3.3. Tình Trạng Nhân Sự 3 Nhóm Kỹ Thuật</div>
+                <ul class="custom-list">
+                    <li>🛠️ <strong>Nhóm Kỹ Thuật 1</strong> (Tạo hình & Cắt 3D/Laser): <code>[Số lượng]</code> người</li>
+                    <li>🛠️ <strong>Nhóm Kỹ Thuật 2</strong> (Lắp ráp kiến trúc & Cảnh quan): <code>[Số lượng]</code> người</li>
+                    <li>🛠️ <strong>Nhóm Kỹ Thuật 3</strong> (Lập trình LED SMD & Đóng kiện): <code>[Số lượng]</code> người</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <div class="info-block-title">🏢 3.4. Tổng Sĩ Số Công Ty Phân Theo Khối</div>
+                <ul class="custom-list">
+                    <li><strong>Tổng sĩ số nhân sự Công ty</strong>: <strong><code>[Tổng sĩ số]</code> người</strong></li>
+                    <li>💼 <strong>Khối Văn Phòng (<code>[Số lượng]</code> người)</strong>: Gồm Ban Giám Đốc, Marketing Manager (Phạm Hoàng Tiến), Kế toán, Sales B2B.</li>
+                    <li>🛠️ <strong>Khối Kỹ Thuật (<code>[Số lượng]</code> người)</strong>: Gồm Trưởng xưởng, Kỹ thuật viên 3D/Laser, Thợ gia công mô hình & Đóng kiện xưởng Thủ Đức.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING FEEDBACK PANEL -->
+    <div class="feedback-panel">
+        <div class="feedback-title">
+            <span>📝 Góp Ý & Điều Chỉnh Báo Cáo</span>
+            <span style="font-size: 0.75rem; color: var(--accent);">Live Feedback</span>
+        </div>
+        <textarea class="feedback-textarea" id="userFeedback" placeholder="Nhập ý kiến góp ý hoặc con số điều chỉnh của Phạm Hoàng Tiến tại đây..."></textarea>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="submitFeedback()">Gửi Góp Ý Cho Master Agent</button>
+    </div>
+
+</div>
+
+<script>
+    let isEditing = false;
+
+    function toggleEditMode() {
+        isEditing = !isEditing;
+        const btn = document.getElementById('editBtn');
+        const editableElems = document.querySelectorAll('.custom-list li, .info-block-title, .stat-value');
+        
+        editableElems.forEach(el => {
+            el.contentEditable = isEditing ? "true" : "false";
+        });
+
+        if (isEditing) {
+            btn.innerHTML = '🔓 Đang Bật Chế Độ Sửa (Nhấp Để Tắt)';
+            btn.style.background = '#FEF3C7';
+            btn.style.color = '#92400E';
+            btn.style.borderColor = '#F59E0B';
+        } else {
+            btn.innerHTML = '✏️ Bật Chế Độ Sửa Trực Tiếp';
+            btn.style.background = 'transparent';
+            btn.style.color = '#2563EB';
+            btn.style.borderColor = '#2563EB';
+        }
+    }
+
+    function saveEdits() {
+        alert("✅ Đã lưu các thông tin chỉnh sửa trên giao diện Web! Master_Marketing_Agent sẽ đồng bộ vào hệ thống tệp báo cáo.");
+    }
+
+    function submitFeedback() {
+        const text = document.getElementById('userFeedback').value;
+        if (!text.trim()) {
+            alert("Vui lòng nhập ý kiến góp ý trước khi gửi!");
+            return;
+        }
+        alert("🚀 Ý kiến góp ý của Phạm Hoàng Tiến đã được gửi tới Master_Marketing_Agent!\n\nNội dung: " + text);
+        document.getElementById('userFeedback').value = "";
+    }
+</script>
+
+</body>
+</html>

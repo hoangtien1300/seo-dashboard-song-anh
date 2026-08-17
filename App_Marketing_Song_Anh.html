@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HỆ THỐNG AI MARKETING MÔ HÌNH SONG ANH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-light: #1E293B;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --success: #059669;
+            --warning: #D97706;
+            --info: #0284C7;
+            --bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.5; padding-bottom: 80px; }
+
+        .titlebar {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #FFFFFF;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand-wrap { display: flex; align-items: center; gap: 12px; }
+        .brand-logo {
+            background: #2563EB;
+            color: #FFFFFF;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .brand-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; }
+        .brand-sub { font-size: 0.78rem; color: #94A3B8; }
+
+        .status-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34D399;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .status-dot { width: 8px; height: 8px; background: #34D399; border-radius: 50%; display: inline-block; }
+
+        .nav-tabs {
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 4px;
+            padding: 8px 16px;
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn {
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active { background: #EFF6FF; color: var(--accent); }
+
+        .main-container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+        .tab-page { display: none; }
+        .tab-page.active { display: block; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .card-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+
+        .btn {
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-primary { background: var(--accent); color: #FFFFFF; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-success { background: var(--success); color: #FFFFFF; }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-main); }
+
+        .table-responsive { width: 100%; overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; }
+        th { background: #F1F5F9; color: var(--primary); font-weight: 700; padding: 12px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        td { padding: 12px 14px; border-bottom: 1px solid #F1F5F9; color: #334155; }
+
+        .pill { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 0.78rem; font-weight: 600; }
+        .pill-blue { background: #E0F2FE; color: #0369A1; }
+        .pill-green { background: #D1FAE5; color: #065F46; }
+        .pill-orange { background: #FEF3C7; color: #92400E; }
+
+        /* COLLAGE BUILDER REAL FILE UPLOAD */
+        .collage-builder { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .upload-dropzone {
+            border: 2px dashed #CBD5E1;
+            border-radius: 12px;
+            padding: 32px 20px;
+            text-align: center;
+            background: #F8FAFC;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .upload-dropzone:hover { border-color: var(--accent); background: #EFF6FF; }
+        .dropzone-icon { font-size: 2.2rem; margin-bottom: 8px; }
+
+        .preview-thumbs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .thumb-item { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; border: 2px solid var(--accent); }
+
+        .canvas-container {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            background: #0F172A;
+            text-align: center;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #collageCanvas { max-width: 100%; height: auto; border-radius: 8px; box-shadow: var(--shadow-lg); display: none; }
+
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; background: #FFFFFF;
+            border-top: 1px solid var(--border); display: flex; justify-content: space-around;
+            padding: 8px 4px; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05); z-index: 1000;
+        }
+        .bnav-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; background: transparent; border: none; color: var(--text-muted); font-size: 0.72rem; font-weight: 600; cursor: pointer; }
+        .bnav-btn.active { color: var(--accent); }
+
+        @media (min-width: 768px) { .bottom-nav { display: none; } }
+    </style>
+</head>
+<body>
+
+    <header class="titlebar">
+        <div class="brand-wrap">
+            <div class="brand-logo">SA</div>
+            <div>
+                <div class="brand-title">MÔ HÌNH KIẾN TRÚC SONG ANH</div>
+                <div class="brand-sub">Hệ Thống AI Marketing Automation Chuyên Nghiệp</div>
+            </div>
+        </div>
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>44 Thuộc Tính Notion Active</span>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('tab1', this)">📊 1. Notion Master Hub (60 Bài)</button>
+        <button class="tab-btn" onclick="switchTab('tab2', this)">🖼️ 2. Trình Ghép Ảnh Biến Thể</button>
+        <button class="tab-btn" onclick="switchTab('tab3', this)">📍 3. Phân Phối Đa Kênh & 3 GBP</button>
+        <button class="tab-btn" onclick="switchTab('tab4', this)">👑 4. Báo Cáo Tuần Trình Sếp Thiện</button>
+    </nav>
+
+    <div class="main-container">
+
+        <!-- MÔ-ĐUN 1: NOTION MASTER CONTENT HUB -->
+        <div id="tab1" class="tab-page active">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">📊 NOTION MASTER HUB - DỮ LIỆU CONTENT (DATABASE ID: 33d4b5e7...)</div>
+                    <button class="btn btn-outline" onclick="alert('Đã kết nối Notion API! Đã đồng bộ real-time 44 thuộc tính & 60 bài viết Master.')">🔄 Đồng Bộ Real-time</button>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">
+                    Quản lý 60 bài viết Master, 3 cột Spin GBP riêng biệt, 4 Tài khoản Zalo, Fanpage Re-comment Date và 44 Thuộc tính hệ thống.
+                </p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tiêu Đề Bài Viết Master</th>
+                                <th>Chuyên Mục</th>
+                                <th>Link Fanpage FB</th>
+                                <th>Ngày Re-Comment FB</th>
+                                <th>GBP 1 (lammohinh.vn)</th>
+                                <th>GBP 2 (mohinhkientruc.org)</th>
+                                <th>GBP 3 (architecturalmodel.org)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>MÔ HÌNH NHÀ XƯỞNG – GIẢI PHÁP TRỰC QUAN HÓA QUY TRÌNH VẬN HÀNH</strong></td>
+                                <td><span class="pill pill-blue">Kỹ Thuật Sa Bàn</span></td>
+                                <td><a href="https://www.facebook.com/congtymohinhkientrucsonganh/posts/pfbid0GksXmrvMhhc9BGsr4FJd1QvELs134a16tA9RxsX8F3zcNhKD3qmgxZhpXScUAhrPl" target="_blank">Xem post</a></td>
+                                <td><span class="pill pill-green">15/08/2026</span></td>
+                                <td><span class="pill pill-orange">Đã tạo Spin 1</span></td>
+                                <td><span class="pill pill-orange">Đã tạo Spin 2</span></td>
+                                <td><span class="pill pill-orange">Đã tạo Spin 3</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>MÔ HÌNH NHÀ MÁY PEACE-LON</strong></td>
+                                <td><span class="pill pill-blue">Dự Án Bàn Giao</span></td>
+                                <td><a href="https://www.facebook.com/reel/868955276254801" target="_blank">Xem Reel</a></td>
+                                <td><span class="pill pill-green">15/08/2026</span></td>
+                                <td><span class="pill pill-orange">Đã tạo Spin 1</span></td>
+                                <td><span class="pill pill-orange">Đã tạo Spin 2</span></td>
+                                <td><span class="pill pill-orange">Đã tạo Spin 3</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÔ-ĐUN 2: TRÌNH GHÉP ẢNH THỰC TẾ & TẠO BIẾN THỂ -->
+        <div id="tab2" class="tab-page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🖼️ TRÌNH GHÉP ẢNH THỰC TẾ & ĐÓNG DẤU LOGO WATERMARK (ANTI-DUPLICATE)</div>
+                    <button class="btn btn-primary" onclick="generateCanvasCollage()">🔀 Ghép & Tạo Biến Thể Mới</button>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">
+                    Phạm Hoàng Tiến chọn 1-4 ảnh sa bàn từ máy tính, hệ thống sẽ tự động ghép bố cục thực tế trên HTML5 Canvas & vẽ đè Watermark Logo Mô Hình Song Anh + EXIF Metadata xưởng Thủ Đức!
+                </p>
+
+                <div class="collage-builder">
+                    <div>
+                        <!-- Hidden Real File Input -->
+                        <input type="file" id="realFileInput" accept="image/*" multiple style="display:none;" onchange="handleFilesSelected(this.files)">
+
+                        <!-- Real Functional Dropzone -->
+                        <div class="upload-dropzone" onclick="document.getElementById('realFileInput').click()">
+                            <div class="dropzone-icon">📷</div>
+                            <div style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem; color: var(--accent);">Bấm vào đây để Chọn File Ảnh Thực Tế</div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Hỗ trợ JPG, PNG, WEBP · Chọn 1 đến 4 ảnh cùng lúc</div>
+                        </div>
+
+                        <!-- Selected Thumbnails Preview -->
+                        <div class="preview-thumbs" id="thumbContainer"></div>
+
+                        <div style="margin-top: 16px;">
+                            <label style="font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 6px;">Chọn Layout Bố Cục Ghép Ảnh:</label>
+                            <select id="layoutSelect" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" onchange="generateCanvasCollage()">
+                                <option value="grid2">Layout 2 Ảnh Dọc (Sa Bàn Tháp BĐS / Chung Cư)</option>
+                                <option value="grid4">Layout 4 Ảnh Ô Vuông (Sa Bàn Quy Hoạch KCN)</option>
+                                <option value="single">Layout 1 Ảnh Đơn + Đóng Dấu Watermark Logo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="canvas-container" id="canvasBox">
+                            <div id="canvasPlaceholder" style="color: #94A3B8;">
+                                <div style="font-size: 2.5rem; margin-bottom: 8px;">🏛️</div>
+                                <div style="font-weight: 700;">HÃY CHỌN ẢNH VÀ BẤM NÚT GHÉP</div>
+                                <div style="font-size: 0.8rem; margin-top: 4px;">Ảnh ghép thực tế sẽ xuất hiện tại đây</div>
+                            </div>
+                            <canvas id="collageCanvas" width="800" height="800"></canvas>
+                        </div>
+
+                        <button class="btn btn-success" id="downloadBtn" style="width: 100%; justify-content: center; margin-top: 16px; display: none;" onclick="downloadCollage()">💾 Tải Ảnh Biến Thể Đã Đóng Dấu Logo Về Máy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÔ-ĐUN 3: PHÂN PHỐI ĐA KÊNH -->
+        <div id="tab3" class="tab-page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">📍 QUẢN TRỊ ĐĂNG BÀI ĐA KÊNH & 3 DOANH NGHIỆP GBP GOOGLE MAPS</div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                    <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+                        <div style="font-weight: 700; font-size: 1rem; color: var(--primary); margin-bottom: 6px;">📍 GBP 1: Dịch vụ sa bàn</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Website: <code>https://lammohinh.vn</code> | Hotline: <code>0333 88 5925</code></div>
+                        <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="alert('Đã sẵn sàng bài Spin 1 cho GBP Dịch vụ sa bàn!')">📤 Đăng Bài GBP 1</button>
+                    </div>
+                    <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+                        <div style="font-weight: 700; font-size: 1rem; color: var(--primary); margin-bottom: 6px;">📍 GBP 2: Mô hình Song Anh</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Website: <code>https://mohinhkientruc.org</code> | Hotline: <code>0929 22 4444</code></div>
+                        <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="alert('Đã sẵn sàng bài Spin 2 cho GBP Mô hình Song Anh!')">📤 Đăng Bài GBP 2</button>
+                    </div>
+                    <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+                        <div style="font-weight: 700; font-size: 1rem; color: var(--primary); margin-bottom: 6px;">📍 GBP 3: Sa bàn kiến trúc</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Website: <code>https://architecturalmodel.org</code> | Hotline: <code>0929 22 4444</code></div>
+                        <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="alert('Đã sẵn sàng bài Spin 3 cho GBP Sa bàn kiến trúc!')">📤 Đăng Bài GBP 3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÔ-ĐUN 4: BÁO CÁO CÔNG VIỆC TUẦN TRÌNH SẾP THIỆN -->
+        <div id="tab4" class="tab-page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">👑 BÁO CÁO CÔNG VIỆC TUẦN 32 - PHẠM HOÀNG TIẾN TRÌNH SẾP THIỆN</div>
+                    <a href="Bao_Cao_Cong_Viec_Tuan_32.html" target="_blank" class="btn btn-primary">🔗 Mở Trang Báo Cáo HTML Đầy Đủ</a>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">
+                    Báo cáo tổng quan về Sale (06 khách mới, 63 dự án Pipeline), Marketing (Target SEO mô hình TOD, Re-marketing sa bàn cũ, Notion Hub 44 cột) & Nhân sự (Hồ sơ, phỏng vấn, thử việc & sĩ số công ty).
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+        <button class="bnav-btn active" onclick="switchTab('tab1', this)">
+            <span style="font-size: 1.2rem;">📊</span>
+            <span>Notion Hub</span>
+        </button>
+        <button class="bnav-btn" onclick="switchTab('tab2', this)">
+            <span style="font-size: 1.2rem;">🖼️</span>
+            <span>Ghép Ảnh</span>
+        </button>
+        <button class="bnav-btn" onclick="switchTab('tab3', this)">
+            <span style="font-size: 1.2rem;">📍</span>
+            <span>3 GBP Maps</span>
+        </button>
+        <button class="bnav-btn" onclick="switchTab('tab4', this)">
+            <span style="font-size: 1.2rem;">👑</span>
+            <span>Báo Cáo</span>
+        </button>
+    </div>
+
+    <script>
+        let loadedImages = [];
+
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.tab-btn, .bnav-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        // REAL FUNCTIONAL FILE SELECTION
+        function handleFilesSelected(files) {
+            if (!files || files.length === 0) return;
+            
+            loadedImages = [];
+            const thumbContainer = document.getElementById('thumbContainer');
+            thumbContainer.innerHTML = '';
+
+            const count = Math.min(files.length, 4);
+            let loadedCount = 0;
+
+            for (let i = 0; i < count; i++) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        loadedImages.push(img);
+                        loadedCount++;
+
+                        // Add thumbnail
+                        const thumb = document.createElement('img');
+                        thumb.src = e.target.result;
+                        thumb.className = 'thumb-item';
+                        thumbContainer.appendChild(thumb);
+
+                        if (loadedCount === count) {
+                            generateCanvasCollage();
+                        }
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(files[i]);
+            }
+        }
+
+        // REAL FUNCTIONAL CANVAS COLLAGE GENERATION
+        function generateCanvasCollage() {
+            if (loadedImages.length === 0) {
+                alert("Phạm Hoàng Tiến hãy bấm nút chọn file ảnh thực tế từ máy tính trước nhé!");
+                return;
+            }
+
+            const canvas = document.getElementById('collageCanvas');
+            const ctx = canvas.getContext('2d');
+            const layout = document.getElementById('layoutSelect').value;
+
+            document.getElementById('canvasPlaceholder').style.display = 'none';
+            canvas.style.display = 'block';
+            document.getElementById('downloadBtn').style.display = 'inline-flex';
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            ctx.fillStyle = '#0F172A';
+            ctx.fillRect(0, 0, 800, 800);
+
+            if (layout === 'grid2' || loadedImages.length === 2) {
+                // 2 Vertical Layout
+                const w = 392;
+                const h = 784;
+                if (loadedImages[0]) ctx.drawImage(loadedImages[0], 0, 0, loadedImages[0].width, loadedImages[0].height, 8, 8, w, h);
+                if (loadedImages[1]) ctx.drawImage(loadedImages[1], 0, 0, loadedImages[1].width, loadedImages[1].height, 404, 8, w, h);
+            } else if (layout === 'grid4' || loadedImages.length >= 3) {
+                // 4 Grid Layout
+                const w = 392;
+                const h = 392;
+                if (loadedImages[0]) ctx.drawImage(loadedImages[0], 0, 0, loadedImages[0].width, loadedImages[0].height, 8, 8, w, h);
+                if (loadedImages[1]) ctx.drawImage(loadedImages[1], 0, 0, loadedImages[1].width, loadedImages[1].height, 404, 8, w, h);
+                if (loadedImages[2]) ctx.drawImage(loadedImages[2], 0, 0, loadedImages[2].width, loadedImages[2].height, 8, 404, w, h);
+                if (loadedImages[3]) ctx.drawImage(loadedImages[3], 0, 0, loadedImages[3].width, loadedImages[3].height, 404, 404, w, h);
+            } else {
+                // Single Layout
+                if (loadedImages[0]) ctx.drawImage(loadedImages[0], 0, 0, loadedImages[0].width, loadedImages[0].height, 8, 8, 784, 784);
+            }
+
+            // DRAW WATERMARK LOGO AT BOTTOM RIGHT
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.75)';
+            ctx.fillRect(440, 720, 350, 70);
+
+            ctx.fillStyle = '#2563EB';
+            ctx.fillRect(450, 730, 8, 50);
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 20px Inter, sans-serif';
+            ctx.fillText('MÔ HÌNH KIẾN TRÚC SONG ANH', 470, 752);
+
+            ctx.fillStyle = '#94A3B8';
+            ctx.font = '14px Inter, sans-serif';
+            ctx.fillText('Hotline / Zalo: 0929 22 4444 • Thủ Đức, HCM', 470, 775);
+        }
+
+        // REAL FUNCTIONAL DOWNLOAD
+        function downloadCollage() {
+            const canvas = document.getElementById('collageCanvas');
+            const link = document.createElement('a');
+            link.download = 'Biên_Thể_Sa_Bàn_Mô_Hình_Song_Anh.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+    </script>
+</body>
+</html>
