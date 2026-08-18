@@ -10,7 +10,7 @@
 > 
 > **GIẢI PHÁP TỪ SONG_ANH_SEO_MASTER (CẬP NHẬT LIVE 18/08/2026):**
 > 1. **Gọt dẹp triệt để sự rối rắm:** Gom gọn 121+ từ khóa rời rạc vào **5 Cụm Topic Clusters Chiến Lược B2B** rõ ràng.
-> 2. **100% Link Thật (Canonical URL Mapping 200 OK):** Rà soát và ánh xạ chính xác 100% URL landing page thực tế trên `mohinhkientruc.org`, đặc biệt đã cập nhật URL B2B chuẩn cho `'mô hình quy hoạch'` -> `https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/` (200 OK - Top 3.3).
+> 2. **100% Link Thật (Canonical URL Mapping 200 OK):** Rà soát và ánh xạ chính xác 100% URL landing page thực tế trên `mohinhkientruc.org`, đặc biệt đã cập nhật URL B2B chuẩn cho `'mô hình quy hoạch'` -> `https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/` (200 OK - Top 3.3).
 > 3. **Bổ Sung Feature Ranking:** Phân loại hiển thị SERP Feature (Featured Snippet Top 0, Local Pack Maps, Image Pack, Video Carousel, Sitelinks, PAA Snippet, Organic Top).
 > 4. **Cấu trúc 4 Phần Chuẩn SEO B2B & GTV SEO 2026:** Giúp Nhân sự Phạm Hoàng Tiến chỉ cần dành **3 phút mỗi tuần** để nắm trọn bức tranh thứ hạng và chỉ đạo đội ngũ.
 
@@ -45,7 +45,7 @@ TOP 11-30  (Ưu Tiên P2 Vào Top): [██████████████]
 
 | STT | Từ Khóa Trọng Tâm | Search Volume | Feature Ranking | Vị Trí Hiện Tại | Trạng Thái | Link Bài Viết Đích (Target Canonical URL) |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| 1 | `mô hình quy hoạch` | 2,200 | ⭐ Featured Snippet (Top 0) | **Top 3.3** | ⚪ Giữ | [https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/](https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/) |
+| 1 | `mô hình quy hoạch` | 2,200 | ⭐ Featured Snippet (Top 0) | **Top 3.3** | ⚪ Giữ | [https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/](https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/) |
 | 2 | `sa bàn khu công nghiệp` | 880 | 🔍 Organic Top | **Top 4.0** | ⚪ Giữ | [https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/](https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/) |
 | 3 | `nhà ga hàng hóa số 1 sân bay long thành` | 720 | ⭐ Featured Snippet (Top 0) | **Top 2.8** | 🟢 +1.4 | [https://mohinhkientruc.org/du-an/mo-hinh-nha-ga-hang-hoa/](https://mohinhkientruc.org/du-an/mo-hinh-nha-ga-hang-hoa/) |
 | 4 | `mô hình đô thị` | 590 | 📸 Image Pack | **Top 1.9** | ⚪ Giữ | [https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/](https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/) |
@@ -130,14 +130,14 @@ TOP 11-30  (Ưu Tiên P2 Vào Top): [██████████████]
 > 1. 100% đường link dưới đây đã được kiểm tra trực tiếp qua HTTP Status Code và xác nhận **200 OK**. Không tồn tại link ảo hay 404.
 > 2. Phân loại chuẩn 4 nhóm Intent (Ý định tìm kiếm) theo GTV SEO 2026:
 >    - **Transactional (Mua ngay / Báo giá):** Điều hướng đến Trang Báo Giá & Trang Liên Hệ Xưởng.
->    - **Commercial Investigation (Doanh nghiệp tìm hiểu / So sánh):** Điều hướng đến Trang Chuyên Mục Cụm & Trang Dự Án Thực Tế (đã cập nhật `https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/`).
+>    - **Commercial Investigation (Doanh nghiệp tìm hiểu / So sánh):** Điều hướng đến Trang Chuyên Mục Cụm & Trang Dự Án Thực Tế (đã cập nhật `https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/`).
 >    - **Informational (Thông tin kỹ thuật / Hướng dẫn):** Điều hướng đến Bài Kiến Thức Kỹ Thuật & Vật Liệu Sa Bàn.
 >    - **Navigational (Tìm thương hiệu Song Anh):** Điều hướng trực tiếp về Trang Chủ `https://mohinhkientruc.org/`.
 
 | Nhóm Ý Định Tìm Kiếm (Search Intent) | Đặc Điểm Khách Hàng B2B | Landing Page Đích Đáp Ứng (Canonical URL 200 OK) | Mã HTTP |
 | :--- | :--- | :--- | :---: |
 | **Transactional** *(Báo giá / Chốt hợp đồng)* | Chủ đầu tư, Nhà thầu cần bảng giá sa bàn, đơn giá thi công ngay. | `https://mohinhkientruc.org/mo-hinh-kien-truc/`<br>`https://mohinhkientruc.org/lam-mo-hinh-kien-truc/`<br>`https://mohinhkientruc.org/lien-he/` | **200 OK** |
-| **Commercial Investigation** *(Năng lực / Dự án)* | Tìm hiểu kinh nghiệm xưởng, xem sa bàn nhà máy, chung cư, quy hoạch đã thi công. | `https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/`<br>`https://mohinhkientruc.org/mo-hinh-chung-cu/`<br>`https://mohinhkientruc.org/mo-hinh-nha-may/`<br>`https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/`<br>`https://mohinhkientruc.org/du-an/` | **200 OK** |
+| **Commercial Investigation** *(Năng lực / Dự án)* | Tìm hiểu kinh nghiệm xưởng, xem sa bàn nhà máy, chung cư, quy hoạch đã thi công. | `https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/`<br>`https://mohinhkientruc.org/mo-hinh-chung-cu/`<br>`https://mohinhkientruc.org/mo-hinh-nha-may/`<br>`https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/`<br>`https://mohinhkientruc.org/du-an/` | **200 OK** |
 | **Informational** *(Vật liệu / Kỹ thuật)* | Tìm hiểu gỗ balsa, cắt mica laser, tỷ lệ sa bàn 1/200, 1/500, đèn LED. | `https://mohinhkientruc.org/kien-thuc-mo-hinh-kien-truc/`<br>`https://mohinhkientruc.org/lam-sa-ban-truong-hoc/`<br>`https://mohinhkientruc.org/lam-mo-hinh-noi-that/` | **200 OK** |
 | **Navigational** *(Thương hiệu Song Anh)* | Khách hàng gõ trực tiếp "Kiến trúc Song Anh", "Công ty Song Anh". | `https://mohinhkientruc.org/` | **200 OK** |
 
@@ -149,7 +149,7 @@ TOP 11-30  (Ưu Tiên P2 Vào Top): [██████████████]
 
 | STT | Cụm Topic Cluster | Từ Khóa Chính | Volume | Intent | Feature Ranking | Rank Tuần Trước | Rank Tuần Này | Biến Động | Cấp Độ Ưu Tiên | URL Đích (Target Canonical 200 OK) | Kế Hoạch Hành Động Chi Tiết |
 | :---: | :--- | :--- | :---: | :--- | :---: | :---: | :---: | :---: | :--- | :--- | :--- |
-| 1 | 1. Quy hoạch & Khu Công Nghiệp | `mô hình quy hoạch` | 2,200 | Informational / Commercial | ⭐ Featured Snippet (Top 0) | Top 3.3 | **Top 3.3** | ⚪ Giữ | 🛡️ P3 - Bảo Vệ Top 1-3 | [https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/](https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/) | Đã cập nhật URL B2B chuẩn /dich-vu-lam-sa-ban-quy-hoach/ (200 OK - Top 3.3). Giữ vững Top 3, tối ưu schema ItemList. |
+| 1 | 1. Quy hoạch & Khu Công Nghiệp | `mô hình quy hoạch` | 2,200 | Informational / Commercial | ⭐ Featured Snippet (Top 0) | Top 3.3 | **Top 3.3** | ⚪ Giữ | 🛡️ P3 - Bảo Vệ Top 1-3 | [https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/](https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/) | Đã cập nhật URL B2B chuẩn /dich-vu-lam-sa-ban-quy-hoach/ (200 OK - Top 3.3). Giữ vững Top 3, tối ưu schema ItemList. |
 | 2 | 1. Quy hoạch & Khu Công Nghiệp | `sa bàn khu công nghiệp` | 880 | Transactional / Commercial | 🔍 Organic Top | Top 4.0 | **Top 4.0** | ⚪ Giữ | P1 - Đẩy Top 4-10 -> Top 1-3 | [https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/](https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/) | Đẩy Top 4 lên Top 1-3: Thêm bảng giá quy hoạch theo ha + trỏ 3 internal link từ bài VSIP 3. |
 | 3 | 1. Quy hoạch & Khu Công Nghiệp | `nhà ga hàng hóa số 1 sân bay long thành` | 720 | Commercial / Navigational | ⭐ Featured Snippet (Top 0) | Top 4.2 | **Top 2.8** | 🟢 +1.4 | 🛡️ P3 - Bảo Vệ Top 1-3 | [https://mohinhkientruc.org/du-an/mo-hinh-nha-ga-hang-hoa/](https://mohinhkientruc.org/du-an/mo-hinh-nha-ga-hang-hoa/) | Giữ Top 3, CTR cao 8.39%. Cập nhật thêm hình ảnh thi công thực tế tại công trình sân bay. |
 | 4 | 1. Quy hoạch & Khu Công Nghiệp | `mô hình đô thị` | 590 | Informational / Commercial | 📸 Image Pack | Top 1.9 | **Top 1.9** | ⚪ Giữ | P3 - Bảo Vệ Top 1-3 | [https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/](https://mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/) | Giữ Top 1.9. Tối ưu Alt tag hình ảnh sa bàn đô thị chất lượng cao 4K. |
@@ -198,5 +198,5 @@ TOP 11-30  (Ưu Tiên P2 Vào Top): [██████████████]
 
 ## 📌 KẾT LUẬN & CAM KẾT NĂNG LỰC TỪ SONG_ANH_SEO_MASTER
 1. **Giải quyết dứt điểm nỗi lo bị rối:** Nhân sự Phạm Hoàng Tiến chỉ cần mở file Markdown này hoặc Dashboard HTML tương tác đi kèm để xem tổng thể hoặc lọc nhanh theo từng Cụm / Feature Ranking / Priority.
-2. **Đảm bảo 100% URL hoạt động:** Tất cả các đường link bài viết điều hướng đều đã được verify HTTP 200 OK trên `mohinhkientruc.org`, đặc biệt link 'mô hình quy hoạch' đã trỏ chuẩn B2B `https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/`.
+2. **Đảm bảo 100% URL hoạt động:** Tất cả các đường link bài viết điều hướng đều đã được verify HTTP 200 OK trên `mohinhkientruc.org`, đặc biệt link 'mô hình quy hoạch' đã trỏ chuẩn B2B `https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/`.
 3. **Sẵn sàng vận hành tự động:** Hệ thống Python script sẵn có (`auto_bidirectional_seo_sync.py`, `save_and_sync_weekly_report.py`) sẽ tiếp tục đồng bộ dữ liệu live từ Search Console API hàng tuần để cập nhật vị trí thứ hạng cho Nhân sự Phạm Hoàng Tiến.
