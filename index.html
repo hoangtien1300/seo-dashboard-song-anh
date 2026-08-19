@@ -56,15 +56,16 @@
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4); white-space: nowrap;
         }
 
-        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
         .kpi-card {
             background: var(--bg-card); padding: 20px; border-radius: 14px; border: 1px solid var(--border-color);
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.2s, border-color 0.2s; position: relative; cursor: help;
         }
         .kpi-card:hover { transform: translateY(-3px); border-color: var(--accent-gold); }
         .kpi-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .kpi-value { font-size: 26px; font-weight: 800; color: var(--text-main); margin: 8px 0 4px 0; }
         .kpi-sub { font-size: 12px; color: var(--accent-gold); font-weight: 500; }
+
+        th[title] { cursor: help; }
 
         .controls {
             display: flex; flex-direction: column; gap: 12px;
@@ -158,32 +159,32 @@
 
     <!-- KPI Grid with Comparison Metrics -->
     <div class="kpi-grid">
-        <div class="kpi-card">
+        <div class="kpi-card" title="Tổng số 44 từ khóa SEO B2B cốt lõi chia theo 5 Topic Clusters được theo dõi thứ hạng real-time.">
             <div class="kpi-label">TỔNG TỪ KHÓA THEO DÕI</div>
             <div class="kpi-value" id="kpi-total">44</div>
             <div class="kpi-sub">5 Topic Clusters B2B</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" title="Vị trí thứ hạng trung bình tổng hợp của toàn bộ bộ từ khóa SEO trên Google SERP (Bứt phá từ Top 16.8 lên Top 6.2).">
             <div class="kpi-label">THỨ HẠNG TRUNG BÌNH</div>
             <div class="kpi-value" style="color: var(--accent-green);">Top 6.2</div>
             <div class="kpi-sub">Ban Đầu: Top 16.8 ➔ Mục Tiêu Top 1.0</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" title="Số lượng từ khóa đạt thứ hạng từ Top 1 đến Top 3 Google, mang lại 80%+ lượt nhấp & Lead Zalo/Call báo giá sa bàn.">
             <div class="kpi-label">TOP 1 - TOP 3 GOOGLE</div>
             <div class="kpi-value" style="color: var(--accent-green);" id="kpi-top3">12</div>
             <div class="kpi-sub">27.3% (Ban đầu 3 KWs - Tăng +20.5%)</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" title="Số lượng từ khóa nằm trong Trang 1 Google (Top 4 - 10), tiềm năng cao cần đẩy bứt phá vào Top 1-3.">
             <div class="kpi-label">TOP 4 - TOP 10 GOOGLE</div>
             <div class="kpi-value" style="color: var(--accent-gold);" id="kpi-top10">20</div>
             <div class="kpi-sub">45.5% (Ban đầu 11 KWs - Tăng +20.5%)</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" title="Chỉ số phần trăm diện tích phủ thương hiệu và tầm nhìn tự nhiên của website trên Google Search (Đạt 68.8%).">
             <div class="kpi-label">VISIBILITY INDEX %</div>
             <div class="kpi-value" style="color: var(--accent-gold-light);">68.8%</div>
             <div class="kpi-sub">🟢 Tăng +42.5% vs Ban Đầu (26.3%)</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" title="Tổng lượng Clicks tìm kiếm tự nhiên và số Leads khách hàng phát sinh cuộc gọi / Zalo tư vấn báo giá.">
             <div class="kpi-label">CLICKS & LEAD CONVERSION</div>
             <div class="kpi-value" style="color: var(--accent-cyan);">3,450 / 185</div>
             <div class="kpi-sub">3,450 Clicks | 185 Leads Zalo/Call (5.36%)</div>
@@ -235,20 +236,20 @@
         <table>
             <thead>
                 <tr>
-                    <th>STT</th>
-                    <th>Cụm Topic Cluster</th>
-                    <th>Từ Khóa Trọng Tâm</th>
-                    <th>Volume</th>
-                    <th>Feature Ranking</th>
-                    <th>Rank Ban Đầu</th>
-                    <th>Rank Hiện Tại</th>
-                    <th>Rank Mục Tiêu</th>
-                    <th>Biến Động</th>
-                    <th>Visibility %</th>
-                    <th>Clicks & Lead Zalo/Call</th>
-                    <th>Mức Ưu Tiên</th>
-                    <th>URL Đích Canonical (200 OK)</th>
-                    <th>Kế Hoạch Hành Động SEO Chi Tiết</th>
+                    <th title="Số thứ tự danh sách từ khóa">STT</th>
+                    <th title="Cụm chủ đề Topic Cluster thuộc cấu trúc website B2B">Cụm Topic Cluster</th>
+                    <th title="Từ khóa SEO trọng tâm mục tiêu được theo dõi thứ hạng">Từ Khóa Trọng Tâm</th>
+                    <th title="Lượt tìm kiếm trung bình hàng tháng (Monthly Search Volume)">Volume</th>
+                    <th title="Tính năng hiển thị đặc biệt trên Google SERP (Top Snippet, Maps, Images, Video)">Feature Ranking</th>
+                    <th title="Thứ hạng vị trí ban đầu trước khi triển khai chiến dịch SEO">Rank Ban Đầu</th>
+                    <th title="Thứ hạng xếp hạng thực tế hiện tại trên Google SERP">Rank Hiện Tại</th>
+                    <th title="Mục tiêu thứ hạng cần đạt (Mục tiêu Top 1.0)">Rank Mục Tiêu</th>
+                    <th title="Biến động tăng/giảm thứ hạng so với ban đầu">Biến Động</th>
+                    <th title="Tỷ lệ % hiển thị độ phủ của từ khóa trên kết quả tìm kiếm">Visibility %</th>
+                    <th title="Số lượt click thực tế và số Leads Zalo/Call báo giá phát sinh">Clicks & Lead Zalo/Call</th>
+                    <th title="Cấp độ ưu tiên triển khai kế hoạch tối ưu (P1, P2, P3)">Mức Ưu Tiên</th>
+                    <th title="Đường dẫn Canonical 200 OK trên mohinhkientruc.org được xếp hạng">URL Đích Canonical (200 OK)</th>
+                    <th title="Chi tiết chiến lược hành động On-page & Internal Link để bứt phá Top 1.0">Kế Hoạch Hành Động SEO Chi Tiết</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
@@ -258,7 +259,7 @@
 
     <div class="footer">
         <p>Báo cáo Quản trị Từ khóa SEO phát triển bởi <strong>song_anh_seo_master</strong> cho <strong>Nhân sự: Phạm Hoàng Tiến | Marketing Manager - Mô Hình Kiến Trúc Song Anh</strong>.</p>
-        <p>Tự động cập nhật đồng bộ 2 chiều với Notion Master Content Hub & Google Search Console API 2026. Hosted Live tại Cloudflare Pages: <strong>seo-dashboard-song-anh.pages.dev</strong>.</p>
+        <p>Tự động cập nhật đồng bộ 2 chiều với Notion Master Content Hub & Google Search Console API 2026. Hosted Live tại Cloudflare Workers: <strong>songanh-marketing.phamhoangtien1300.workers.dev</strong>.</p>
     </div>
 
     <script>
