@@ -819,7 +819,7 @@
 
         /* Collapsible accordion transition */
         .submenu-container { max-height: 0; overflow: hidden; transition: max-height 0.25s ease-in-out; }
-        .submenu-container.open { max-height: 2500px; }
+        .submenu-container.open { max-height: 500px; }
 
         /* Sidebar toggle transition Desktop & Mobile */
         #sidebar {
@@ -1001,6 +1001,17 @@
             transform: scale(1.15);
         }
 
+    
+        /* Responsive Activity Log: Mobile Card View (<640px) vs Desktop Table (>=640px) */
+        @media (max-width: 639px) {
+            #activity-log-table-container { display: none !important; }
+            #activity-log-mobile-cards { display: block !important; }
+        }
+        @media (min-width: 640px) {
+            #activity-log-table-container { display: block !important; }
+            #activity-log-mobile-cards { display: none !important; }
+        }
+
     </style>
     <script>
         // Early global definition for Instant Menu Toggle
@@ -1145,125 +1156,110 @@
                         </button>
                     </div>
 
-                    <!-- 📢 MỤC MARKETING (ACCORDION CHA) -->
-                    <div class="accordion-group rounded-xl border border-sky-200 bg-sky-50/60 overflow-hidden mb-2 shadow-2xs">
-                        <button onclick="toggleAccordion('acc-marketing')" class="w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-sky-100/80 transition">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-bullhorn text-sky-600 w-4"></i>
-                                <span class="font-extrabold text-slate-900">📢 Marketing</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-sky-100 text-sky-700 font-bold">7 Kênh</span>
-                                <i id="icon-acc-marketing" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-300 rotate-180"></i>
-                            </div>
-                        </button>
-                        
-                        <div id="acc-marketing" class="submenu-container open bg-white border-t border-sky-100 p-1 space-y-1">
-                            <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2 font-bold text-brand-navy hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fa-solid fa-globe text-sky-600 w-4"></i>
-                                        <span class="text-[11.5px]">SEO Website</span>
-                                    </div>
-                                    <div class="flex items-center gap-1.5">
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                        <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
-                                    </div>
-                                </button>
-                                
-                                <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
-                                    <div class="py-1 px-1 space-y-0.5">
-                                        <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">🔍 Kiểm Tra Audit</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
-                                        </button>
-                                        <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">🔑 Theo Dõi Từ Khóa</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
-                                        </button>
-                                        <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">📄 On-Page &amp; Schema</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
-                                        </button>
-                                        <button onclick="selectModule('cannibalization')" id="sub-cannibalization" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">🛡️ Ăn Thịt Từ Khóa</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
-                                        </button>
-                                        <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">🔗 Nội Dung &amp; Link</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
-                                        </button>
-                                        <button onclick="selectModule('offpage')" id="sub-offpage" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">🌐 Off-Page &amp; Entity</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
-                                        </button>
-                                        <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
-                                            <span class="truncate">🏆 Đối Thủ Top 1</span>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 2. GOOGLE BUSINESS -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span class="text-[11.5px]">Google Business</span></div>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                            </div>
-
-                            <!-- 3. FACEBOOK -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span class="text-[11.5px]">Facebook</span></div>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                            </div>
-
-                            <!-- 4. ZALO MARKETING -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span class="text-[11.5px]">Zalo Marketing</span></div>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                            </div>
-
-                            <!-- 5. X.COM -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span class="text-[11.5px]">X.com</span></div>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                                </button>
-                            </div>
-
-                            <!-- 6. TIKTOK -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span class="text-[11.5px]">TikTok</span></div>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                                </button>
-                            </div>
-
-                            <!-- 7. YOUTUBE -->
-                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
-                                <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span class="text-[11.5px]">YouTube</span></div>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 👥 NHÂN SỰ SONG ANH (ĐẶT SAU YOUTUBE / KHỐI MARKETING) -->
+                    <!-- 👥 NHÂN SỰ SONG ANH -->
                     <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-2 shadow-2xs">
                         <button onclick="selectModule('nhan-su')" id="sub-nhan-su" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-indigo-100/70 transition">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-users-gear text-indigo-600 w-4"></i>
                                 <span class="font-extrabold text-slate-900">👥 Nhân Sự</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 font-bold">20 NS</span>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 font-bold">19 NS</span>
+                        </button>
+                    </div>
+
+                    
+                    <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-globe text-sky-600 w-4"></i>
+                                <span>SEO Website</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                            </div>
+                        </button>
+                        
+                        <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
+                            <div class="py-1 pl-2">
+                                <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>🔍 Kiểm Tra Audit</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                                </button>
+                                <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>🔑 Theo Dõi Từ Khóa</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                                <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>📄 On-Page &amp; Schema</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                                <button onclick="selectModule('cannibalization')" id="sub-cannibalization" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>🛡️ Ăn Thịt Từ Khóa</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                                </button>
+                                <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>🔗 Nội Dung &amp; Link</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                                <button onclick="selectModule('offpage')" id="sub-offpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>🌐 Off-Page &amp; Entity</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                                </button>
+                                <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                    <span>🏆 Đối Thủ Top 1</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. GOOGLE BUSINESS -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span>Google Business</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                        </button>
+                    </div>
+
+                    <!-- 3. FACEBOOK -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span>Facebook</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                        </button>
+                    </div>
+
+                    <!-- 4. ZALO MARKETING -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span>Zalo Marketing</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                        </button>
+                    </div>
+
+                    <!-- 5. X.COM -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span>X.com</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                        </button>
+                    </div>
+
+                    <!-- 6. TIKTOK -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span>TikTok</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                        </button>
+                    </div>
+
+                    <!-- 7. YOUTUBE -->
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                        <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                            <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span>YouTube</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                         </button>
                     </div>
 
@@ -1395,7 +1391,7 @@
         </aside>
 
         <!-- Main Workspace Area -->
-        <main id="main-content" class="flex-1 overflow-y-auto p-6 space-y-5">
+        <main id="main-content" class="flex-1 overflow-y-auto p-4 sm:p-6 pb-28 lg:pb-8 space-y-5">
 
             <!-- 🌟 MODULE 1: THEO DÕI TỪ KHÓA (FULL 100% COMPLETE HTML CODE & 14 KEYWORDS & LINE CHART) -->
                         <!-- 0. MASTER HOME DASHBOARD PANEL (#panel-home) -->
@@ -1511,8 +1507,8 @@
                     </div>
                 </div>
 
-                <!-- Clean Activity Log Table -->
-                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden space-y-3 p-4.5">
+                <!-- Clean Activity Log Table & Mobile Cards -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden space-y-3 p-4 sm:p-4.5">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                         <div>
                             <h3 class="text-xs font-heading font-extrabold text-slate-800 flex items-center gap-2">
@@ -1521,14 +1517,14 @@
                             <p class="text-[10px] text-slate-400 mt-0.5">Nhật ký tự động hóa realtime từ Trợ lý AI & Nhân sự</p>
                         </div>
                         
-                        <!-- Filters & Search -->
-                        <div class="flex items-center gap-2">
-                            <div class="relative">
+                        <!-- Filters & Search (Responsive mobile wrapping) -->
+                        <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                            <div class="relative flex-1 sm:flex-initial min-w-[125px]">
                                 <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[10px]"></i>
-                                <input type="text" id="activity-log-search-input" onkeyup="filterActivityLogTable()" placeholder="Tìm nhật ký..." class="pl-7 pr-2.5 py-1 text-[11px] font-semibold border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 w-36 transition">
+                                <input type="text" id="activity-log-search-input" onkeyup="filterActivityLogTable()" placeholder="Tìm nhật ký..." class="w-full sm:w-36 pl-7 pr-2.5 py-1.5 sm:py-1 text-[11px] font-semibold border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition">
                             </div>
                             
-                            <select id="activity-log-module-filter" onchange="filterActivityLogTable()" class="px-2.5 py-1 text-[11px] font-bold border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 text-slate-700 cursor-pointer">
+                            <select id="activity-log-module-filter" onchange="filterActivityLogTable()" class="flex-1 sm:flex-initial min-w-[130px] px-2.5 py-1.5 sm:py-1 text-[11px] font-bold border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 text-slate-700 cursor-pointer">
                                 <option value="">Tất cả Kênh / Nền tảng</option>
                                 <option value="Facebook">Facebook</option>
                                 <option value="SEO">SEO Website</option>
@@ -1539,14 +1535,19 @@
                                 <option value="Hệ Thống">Hệ Thống</option>
                             </select>
 
-                            <span id="activity-log-count-badge" class="px-2 py-1 text-[10px] font-extrabold bg-slate-100 text-slate-600 rounded-lg border border-slate-200">
+                            <span id="activity-log-count-badge" class="px-2 py-1 text-[10px] font-extrabold bg-slate-100 text-slate-600 rounded-lg border border-slate-200 shrink-0">
                                 8 Logs
                             </span>
                         </div>
                     </div>
 
-                    <!-- Table Container -->
-                    <div class="overflow-x-auto rounded-xl border border-slate-100">
+                    <!-- Mobile Cards List View (Hiển thị mượt mà trên Mobile < sm, không tràn màn hình) -->
+                    <div id="activity-log-mobile-cards" class="space-y-2.5">
+                        <!-- Dynamic Mobile Cards rendered via JS -->
+                    </div>
+
+                    <!-- Desktop & Tablet Table View (Ẩn trên Mobile < sm, hiện từ sm trở lên) -->
+                    <div id="activity-log-table-container" class="overflow-x-auto rounded-xl border border-slate-100">
                         <table class="w-full text-left text-xs border-collapse">
                             <thead class="bg-slate-50 text-slate-600 font-bold text-[11px] border-b border-slate-100">
                                 <tr>
@@ -1564,8 +1565,8 @@
                     </div>
 
                     <!-- Pagination -->
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[11px] text-slate-500">
-                        <div id="activity-log-pagination-info">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+                        <div id="activity-log-pagination-info" class="text-center sm:text-left">
                             Hiển thị <span id="activity-log-start-idx" class="font-bold text-slate-700">1</span> - <span id="activity-log-end-idx" class="font-bold text-slate-700">10</span> / <span id="activity-log-total-count" class="font-bold text-slate-700">15</span>
                         </div>
                         <div class="flex items-center gap-1.5">
@@ -4976,10 +4977,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 </form>
             </div>
         </div>
-
-        
-        
-        <!-- ========================================================================= -->
+<!-- ========================================================================= -->
         <!-- 🌐 MODAL: THÊM / SỬA KÊNH SOCIAL -->
         <!-- ========================================================================= -->
         <div id="social-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
@@ -5216,185 +5214,169 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         </div>
 
         
-            
-            
-            <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
+                                    <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
             <div id="panel-nhan-su" class="module-panel space-y-5 hidden" style="display: none;">
-                <!-- Header Banner -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 px-5 py-4 rounded-2xl text-white shadow-md border border-indigo-800/40">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 flex items-center justify-center text-lg shadow-inner">
+                <!-- Module Header / Banner -->
+                <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 border border-indigo-500/20">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600/30 border border-indigo-400/30 flex items-center justify-center text-indigo-300 text-2xl">
                             <i class="fa-solid fa-users-gear"></i>
                         </div>
                         <div>
-                            <h2 class="text-sm sm:text-base font-heading font-black text-white flex items-center gap-2">
-                                <span>Báo Cáo & Quản Trị Nhân Sự Song Anh</span>
-                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Notion Live Sync
-                                </span>
-                            </h2>
-                            <p class="text-[11px] text-indigo-200/80 font-medium">Tuần 31/08 – 06/09/2026 | Đồng bộ chuẩn hóa từ Notion (Đã loại Part-time & Sếp)</p>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-300 bg-indigo-900/60 px-2 py-0.5 rounded border border-indigo-500/30">QUẢN TRỊ NỘI BỘ</span>
+                                <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle-check text-[9px]"></i> Đồng bộ trực tiếp Notion DB</span>
+                            </div>
+                            <h2 class="text-lg font-black tracking-tight text-white mt-0.5">BÁO CÁO & QUẢN TRỊ NHÂN SỰ SONG ANH</h2>
+                            <p class="text-xs text-slate-300">Tổng quân số thực tế: <strong class="text-amber-300">19 Nhân sự</strong> (Khối Văn phòng & 3 Nhóm Kỹ thuật Xưởng)</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[11px] font-bold px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-white flex items-center gap-1.5">
-                            <i class="fa-solid fa-calendar-week text-indigo-400"></i> Tuần 31/08 – 06/09/2026
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                        <span class="px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-white font-bold backdrop-blur-xs flex items-center gap-1.5">
+                            <i class="fa-regular fa-calendar-check text-indigo-400"></i> Tuần 31/08 – 06/09/2026
                         </span>
+                        <a href="https://notion.so/19b4b5e73d90803abda4dff1da951ef6" target="_blank" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition flex items-center gap-1.5 shadow-xs">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Mở Notion DB
+                        </a>
                     </div>
                 </div>
 
-                <!-- 4 KPI Header Cards -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Tổng Quân Số</span>
-                            <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold">
-                                <i class="fa-solid fa-id-card"></i>
-                            </div>
+                <!-- 4 Thẻ KPI Quân Số Header -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">TỔNG SĨ SỐ</span>
+                        <div class="flex items-baseline justify-between mt-2">
+                            <span class="text-2xl font-black text-slate-900">19</span>
+                            <span class="text-[10px] font-extrabold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Người</span>
                         </div>
-                        <div class="mt-2 flex items-baseline gap-2">
-                            <span class="text-2xl font-black text-slate-900">20</span>
-                            <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">100% Hoạt động</span>
-                        </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">16 Chính thức + 02 CTV + 02 Thử việc</p>
                     </div>
-
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between">
                         <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Khối Văn Phòng</span>
-                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-xs font-bold">
-                                <i class="fa-solid fa-building"></i>
-                            </div>
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">HÀNH CHÍNH</span>
+                            <span class="text-[9px] font-bold text-slate-400" title="Lương cố định, không theo thầu">(Lương CĐ)</span>
                         </div>
-                        <div class="mt-2 flex items-baseline gap-2">
-                            <span class="text-2xl font-black text-slate-900">05</span>
-                            <span class="text-[10px] text-slate-500 font-semibold">03 CT + 02 CTV</span>
+                        <div class="flex items-baseline justify-between mt-2">
+                            <span class="text-2xl font-black text-emerald-600">06</span>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Chính thức</span>
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Marketing, Kế toán & Kho, Sales, Lập trình</p>
                     </div>
-
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Khối Kỹ Thuật</span>
-                            <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-bold">
-                                <i class="fa-solid fa-cubes-stacked"></i>
-                            </div>
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">CƠ BẢN + KHOÁN</span>
+                        <div class="flex items-baseline justify-between mt-2">
+                            <span class="text-2xl font-black text-blue-600">10</span>
+                            <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">Kỹ thuật</span>
                         </div>
-                        <div class="mt-2 flex items-baseline gap-2">
-                            <span class="text-2xl font-black text-slate-900">15</span>
-                            <span class="text-[10px] text-indigo-600 font-bold bg-indigo-50 px-1.5 py-0.5 rounded">3 Nhóm Xưởng</span>
-                        </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Thế Anh (5) + Huynh (5) + Hiển (5)</p>
                     </div>
-
-                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Đang Thử Việc</span>
-                            <div class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-xs font-bold">
-                                <i class="fa-solid fa-user-clock"></i>
-                            </div>
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">THỬ VIỆC</span>
+                        <div class="flex items-baseline justify-between mt-2">
+                            <span class="text-2xl font-black text-amber-600">01</span>
+                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">Đang thử việc</span>
                         </div>
-                        <div class="mt-2 flex items-baseline gap-2">
-                            <span class="text-2xl font-black text-slate-900">02</span>
-                            <span class="text-[10px] text-rose-600 font-bold bg-rose-50 px-1.5 py-0.5 rounded">02 Nhân Sự</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between col-span-2 sm:col-span-1">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">CỘNG TÁC VIÊN</span>
+                        <div class="flex items-baseline justify-between mt-2">
+                            <span class="text-2xl font-black text-purple-600">02</span>
+                            <span class="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full">CTV VP</span>
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Thành (Nhóm Huynh) & Luân (Nhóm Hiển)</p>
                     </div>
                 </div>
 
-                <!-- Bảng Ma Trận Tổng Hợp Quân Số (Có Cột CTV và Không Đếm Trùng) -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                <!-- BẢNG MA TRẬN PHÂN BỔ QUÂN SỐ VÀ HÌNH THỨC LÀM VIỆC -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
                     <div class="px-5 py-3.5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-table-cells text-indigo-600"></i>
-                            <h3 class="text-xs font-heading font-black text-slate-800 uppercase tracking-wider">Nhân Sự Theo Phòng Ban / Nhóm & Hình Thức Làm Việc</h3>
+                            <h3 class="text-xs font-black text-slate-900 uppercase tracking-wide">MA TRẬN SĨ SỐ THEO PHÒNG BAN & HÌNH THỨC LÀM VIỆC</h3>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-2.5 py-1 rounded-lg">Không bao gồm Part-time</span>
+                        <span class="text-[10px] font-bold text-slate-600 bg-slate-200/60 px-2.5 py-0.5 rounded-full">Hành chính = Lương cố định • Không trùng lặp</span>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs border-collapse">
-                            <thead>
-                                <tr class="bg-slate-100/70 border-b border-slate-200 text-slate-700 text-[11px] font-black uppercase">
-                                    <th class="py-3 px-4">Phòng Ban / Nhóm</th>
-                                    <th class="py-3 px-4 text-center">Hành Chính</th>
-                                    <th class="py-3 px-4 text-center">Cơ Bản + Khoán Việc</th>
-                                    <th class="py-3 px-4 text-center">Thử Việc</th>
-                                    <th class="py-3 px-4 text-center">Cộng Tác Viên</th>
-                                    <th class="py-3 px-4 text-right font-black text-brand-navy">TỔNG SĨ SỐ</th>
+                        <table class="w-full text-xs text-left">
+                            <thead class="text-[11px] uppercase bg-slate-100/70 text-slate-700 font-extrabold border-b border-slate-200">
+                                <tr>
+                                    <th class="py-3 px-4">PHÒNG BAN / NHÓM</th>
+                                    <th class="py-3 px-4 text-center">HÀNH CHÍNH</th>
+                                    <th class="py-3 px-4 text-center">CƠ BẢN + KHOÁN VIỆC</th>
+                                    <th class="py-3 px-4 text-center">THỬ VIỆC</th>
+                                    <th class="py-3 px-4 text-center">CỘNG TÁC VIÊN</th>
+                                    <th class="py-3 px-4 text-right">TỔNG SĨ SỐ</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-100 text-slate-800 font-medium">
-                                <tr class="hover:bg-slate-50/80">
-                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
-                                        <i class="fa-solid fa-building text-amber-600"></i> Khối Văn Phòng
+                            <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+                                <tr class="hover:bg-slate-50/80 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900 flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                        KHỐI VĂN PHÒNG
                                     </td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
-                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-amber-700">02</td>
-                                    <td class="py-2.5 px-4 text-right font-black text-amber-700">05</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-600">03</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-center font-bold text-purple-600">02</td>
+                                    <td class="py-3 px-4 text-right font-black text-slate-900">05</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50/80">
-                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
-                                        <span class="w-2 h-2 rounded-full bg-blue-500"></span> Nhóm Thế Anh
+                                <tr class="hover:bg-slate-50/80 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900 flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                        NHÓM THẾ ANH
                                     </td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">01</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">04</td>
-                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-right font-black text-blue-700">05</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-600">01</td>
+                                    <td class="py-3 px-4 text-center font-bold text-blue-600">04</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-right font-black text-slate-900">05</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50/80">
-                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
-                                        <span class="w-2 h-2 rounded-full bg-purple-500"></span> Nhóm Huynh
+                                <tr class="hover:bg-slate-50/80 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900 flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                                        NHÓM HUYNH
                                     </td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">01</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-rose-600">01</td>
-                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-right font-black text-purple-700">05</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-600">01</td>
+                                    <td class="py-3 px-4 text-center font-bold text-blue-600">03</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-right font-black text-slate-900">04</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50/80">
-                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
-                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Nhóm Hiển
+                                <tr class="hover:bg-slate-50/80 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900 flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                        NHÓM HIỂN
                                     </td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">01</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-rose-600">01</td>
-                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-right font-black text-emerald-700">05</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-600">01</td>
+                                    <td class="py-3 px-4 text-center font-bold text-blue-600">03</td>
+                                    <td class="py-3 px-4 text-center font-bold text-amber-600">01</td>
+                                    <td class="py-3 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-3 px-4 text-right font-black text-slate-900">05</td>
                                 </tr>
                             </tbody>
-                            <tfoot>
-                                <tr class="bg-slate-900 text-white font-black text-xs">
+                            <tfoot class="bg-slate-900 text-white font-bold border-t-2 border-slate-900">
+                                <tr>
                                     <td class="py-3 px-4 uppercase tracking-wider">TỔNG SĨ SỐ NHÂN SỰ CÔNG TY</td>
                                     <td class="py-3 px-4 text-center text-emerald-400 text-sm">06</td>
-                                    <td class="py-3 px-4 text-center text-blue-400 text-sm">10</td>
-                                    <td class="py-3 px-4 text-center text-rose-400 text-sm">02</td>
-                                    <td class="py-3 px-4 text-center text-amber-400 text-sm">02</td>
-                                    <td class="py-3 px-4 text-right text-amber-300 text-base font-extrabold">20</td>
+                                    <td class="py-3 px-4 text-center text-blue-300 text-sm">10</td>
+                                    <td class="py-3 px-4 text-center text-amber-400 text-sm">01</td>
+                                    <td class="py-3 px-4 text-center text-purple-300 text-sm">02</td>
+                                    <td class="py-3 px-4 text-right text-amber-300 text-base font-extrabold">19</td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
 
-                <!-- Danh Sách Chi Tiết 20 Nhân Sự Đang Làm -->
+                                                <!-- Danh Sách Chi Tiết 19 Nhân Sự Đang Làm (4 Nhóm Tinh Gọn - Không Label Thừa) -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                    <!-- Khối Văn Phòng -->
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-                        <div class="px-4 py-3 bg-amber-50/70 border-b border-amber-200/60 flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-building-user text-amber-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Khối Văn Phòng (05 Nhân sự)</h4>
-                            </div>
-                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">03 CT + 02 CTV</span>
+                    <!-- KHỐI VĂN PHÒNG -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+                        <div class="px-4 py-3 bg-amber-50/70 border-b border-amber-200/60 flex items-center gap-2">
+                            <i class="fa-solid fa-building-user text-amber-600"></i>
+                            <h4 class="text-xs font-bold text-slate-900 uppercase">KHỐI VĂN PHÒNG (05 NHÂN SỰ)</h4>
                         </div>
                         <div class="divide-y divide-slate-100 p-2 space-y-1">
                             <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
                                 <div>
                                     <p class="text-xs font-bold text-slate-900">PHẠM HOÀNG TIẾN</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-indigo-700">Marketing</span> | Vị trí: Marketing</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-indigo-700">Marketing & Nhân sự</span> | Vị trí: Marketing & Nhân sự</p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
@@ -5415,147 +5397,136 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
                                 <div>
                                     <p class="text-xs font-bold text-slate-900">ĐINH VĂN THẮNG</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Văn phòng</span> | Vị trí: Lập trình viên</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-purple-700">Văn phòng</span> | Vị trí: Lập trình viên</p>
                                 </div>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">Cộng tác viên</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Cộng tác viên</span>
                             </div>
                             <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
                                 <div>
                                     <p class="text-xs font-bold text-slate-900">NGUYỄN THỊ HOA</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Văn phòng</span> | Vị trí: Kế toán trưởng</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-purple-700">Văn phòng</span> | Vị trí: Kế toán trưởng</p>
                                 </div>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">Cộng tác viên</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Cộng tác viên</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Khối Kỹ Thuật: Nhóm Thế Anh -->
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-                        <div class="px-4 py-3 bg-blue-50/70 border-b border-blue-200/60 flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-draw-polygon text-blue-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Nhóm Thế Anh (05 Nhân sự)</h4>
-                            </div>
+                    <!-- NHÓM THẾ ANH -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+                        <div class="px-4 py-3 bg-blue-50/70 border-b border-blue-200/60 flex items-center gap-2">
+                            <i class="fa-solid fa-draw-polygon text-blue-600"></i>
+                            <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM THẾ ANH (05 NHÂN SỰ)</h4>
                         </div>
-                        <div class="divide-y divide-slate-100 p-2 space-y-0.5 text-xs">
-                            <div class="p-2 rounded-lg flex items-center justify-between">
+                        <div class="divide-y divide-slate-100 p-2 space-y-1">
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
                                 <div>
-                                    <span class="font-bold text-slate-900">HOÀNG THẾ ANH</span>
+                                    <span class="text-xs font-bold text-slate-900">HOÀNG THẾ ANH</span>
                                     <span class="text-[10px] text-blue-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
                                 </div>
-                                <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">TRẦN VĂN HÙNG</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">TRẦN VĂN HÙNG</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">DIÊM THỊ DIỄM QUỲNH</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">DIÊM THỊ DIỄM QUỲNH</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">NGUYỄN HỒNG ĐẠT</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">NGUYỄN HỒNG ĐẠT</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Khối Kỹ Thuật: Nhóm Huynh -->
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-                        <div class="px-4 py-3 bg-purple-50/70 border-b border-purple-200/60 flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-city text-purple-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Nhóm Huynh (05 Nhân sự)</h4>
-                            </div>
+                    <!-- NHÓM HUYNH -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+                        <div class="px-4 py-3 bg-purple-50/70 border-b border-purple-200/60 flex items-center gap-2">
+                            <i class="fa-solid fa-city text-purple-600"></i>
+                            <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM HUYNH (04 NHÂN SỰ)</h4>
                         </div>
-                        <div class="divide-y divide-slate-100 p-2 space-y-0.5 text-xs">
-                            <div class="p-2 rounded-lg flex items-center justify-between">
+                        <div class="divide-y divide-slate-100 p-2 space-y-1">
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
                                 <div>
-                                    <span class="font-bold text-slate-900">MAI XUÂN HUYNH</span>
+                                    <span class="text-xs font-bold text-slate-900">MAI XUÂN HUYNH</span>
                                     <span class="text-[10px] text-purple-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
                                 </div>
-                                <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">NGUYỄN TRỌNG ÂN</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">NGUYỄN TRỌNG ÂN</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">PHẠM THẾ SƠN</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
-                            </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between bg-rose-50/40 border border-rose-100 rounded-lg">
-                                <div>
-                                    <span class="font-bold text-slate-900">Hoàng Lê Công Thành</span>
-                                    <span class="text-[10px] text-rose-600 font-extrabold ml-1.5">(Thử việc - Hết hạn 31/8)</span>
-                                </div>
-                                <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">Thử việc</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">PHẠM THẾ SƠN</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Khối Kỹ Thuật: Nhóm Hiển -->
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-                        <div class="px-4 py-3 bg-emerald-50/70 border-b border-emerald-200/60 flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-tree text-emerald-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Nhóm Hiển (05 Nhân sự)</h4>
-                            </div>
+                    <!-- NHÓM HIỂN -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+                        <div class="px-4 py-3 bg-emerald-50/70 border-b border-emerald-200/60 flex items-center gap-2">
+                            <i class="fa-solid fa-tree text-emerald-600"></i>
+                            <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM HIỂN (05 NHÂN SỰ)</h4>
                         </div>
-                        <div class="divide-y divide-slate-100 p-2 space-y-0.5 text-xs">
-                            <div class="p-2 rounded-lg flex items-center justify-between">
+                        <div class="divide-y divide-slate-100 p-2 space-y-1">
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
                                 <div>
-                                    <span class="font-bold text-slate-900">PHAN MINH HIỂN</span>
+                                    <span class="text-xs font-bold text-slate-900">PHAN MINH HIỂN</span>
                                     <span class="text-[10px] text-emerald-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
                                 </div>
-                                <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">LA NHẬT NAM</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">LA NHẬT NAM</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">MAI HOÀNG PHÚC</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-900">MAI HOÀNG PHÚC</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between bg-rose-50/40 border border-rose-100 rounded-lg">
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between bg-amber-50/50 border border-amber-200/60 rounded-lg">
                                 <div>
-                                    <span class="font-bold text-slate-900">Phạm Vũ Luân</span>
-                                    <span class="text-[10px] text-rose-600 font-extrabold ml-1.5">(Thử việc - Hết hạn 07/9)</span>
+                                    <span class="text-xs font-bold text-slate-900">PHẠM VŨ LUÂN</span>
+                                    <span class="text-[10px] text-amber-700 font-extrabold ml-1.5">(Thử việc - Hết hạn 07/9)</span>
                                 </div>
-                                <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">Thử việc</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200">Thử việc</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Footer Section: Tuyển Dụng & Onboarding -->
-                <div class="bg-gradient-to-br from-indigo-50/80 via-white to-blue-50/80 p-4 rounded-2xl border border-indigo-100 text-xs space-y-2">
+                <!-- BIẾN ĐỘNG NHÂN SỰ TRONG TUẦN -->
+                <div class="bg-gradient-to-br from-slate-50 via-white to-rose-50/40 p-4 rounded-2xl border border-rose-100 text-xs space-y-2">
                     <div class="flex items-center justify-between">
-                        <span class="font-black text-slate-900 flex items-center gap-1.5 text-xs">
-                            <i class="fa-solid fa-bullhorn text-indigo-600"></i> Tiến Độ Tuyển Dụng Kỹ Thuật Viên Mô Hình Mới
+                        <span class="font-black text-slate-900 flex items-center gap-1.5 text-xs uppercase">
+                            <i class="fa-solid fa-user-minus text-rose-600"></i> GHI NHẬN BIẾN ĐỘNG NHÂN SỰ TRONG TUẦN
                         </span>
-                        <span class="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-full">Tiếp nhận 08/09/2026</span>
+                        <span class="text-[10px] font-bold bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full">01 Nghỉ việc</span>
                     </div>
-                    <p class="text-slate-600 text-[11.5px] leading-relaxed">
-                        Đã tiếp nhận <strong>04 hồ sơ ứng viên</strong>, phỏng vấn nhanh và tuyển chọn <strong>02 ứng viên Kỹ thuật Mô hình đạt chuẩn</strong> (KTS ĐH Kiến Trúc TP.HCM và Kỹ thuật viên bóc tách Laser/CNC). Lộ trình thử việc 15 ngày tại xưởng sẽ bắt đầu từ <strong>Thứ Ba (08/09/2026)</strong>.
+                    <p class="text-slate-700 text-[11.5px] leading-relaxed">
+                        • <strong>Hoàng Lê Công Thành</strong> (Nhóm Huynh): Đã xin nghỉ việc từ ngày <strong>02/09/2026</strong> sau kỳ nghỉ lễ Quốc khánh 2/9.
                     </p>
                 </div>
             </div>
 
-            <!-- GLOBAL FOOTER (LUÔN Ở CUỐI CÙNG DƯỚI TẤT CẢ CÁC MODULES) -->
+
+
+            <!-- Global System Footer -->
             <footer class="mt-8 pt-4 border-t border-slate-200 text-slate-500 text-xs flex flex-col md:flex-row items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
                     <span class="font-bold text-slate-700">Mô Hình Song Anh © 2026</span>
@@ -5571,8 +5542,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     <span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 font-bold border border-cyan-200">🌐 Thông - Trợ lý Website</span>
                 </div>
             </footer>
-
-</main>
+        </main>
     </div>
 
     <!-- Notification Toast -->
@@ -13948,8 +13918,9 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
         function renderActivityLogTable(items, page = currentActivityLogPage) {
             const tbody = document.getElementById('activity-log-table-body');
+            const mobileCards = document.getElementById('activity-log-mobile-cards');
             const badge = document.getElementById('activity-log-count-badge');
-            if (!tbody) return;
+            if (!tbody && !mobileCards) return;
 
             const list = items || marketingActivityLog || [];
             currentActivityLogFilteredList = list;
@@ -13970,7 +13941,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const btnNext = document.getElementById('activity-log-btn-next');
 
             if (list.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400 font-medium">Không tìm thấy nhật ký thao tác phù hợp.</td></tr>`;
+                if (tbody) tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400 font-medium">Không tìm thấy nhật ký thao tác phù hợp.</td></tr>`;
+                if (mobileCards) mobileCards.innerHTML = `<div class="p-5 text-center text-slate-400 font-medium text-xs bg-slate-50 rounded-xl border border-slate-100">Không tìm thấy nhật ký thao tác phù hợp.</div>`;
                 if (startIdxElem) startIdxElem.innerText = "0";
                 if (endIdxElem) endIdxElem.innerText = "0";
                 if (totalCountElem) totalCountElem.innerText = "0";
@@ -13990,7 +13962,9 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             if (btnPrev) btnPrev.disabled = (currentActivityLogPage <= 1);
             if (btnNext) btnNext.disabled = (currentActivityLogPage >= totalPages);
 
-            let html = '';
+            let tableHtml = '';
+            let cardsHtml = '';
+
             pageItems.forEach(item => {
                 const rawTime = (item.timestamp || 'N/A').replace(/\r?\n/g, ' ').trim();
                 const mod = item.module || 'Hệ thống';
@@ -14015,11 +13989,13 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 }
 
                 // Format Thời gian
+                let datePart = rawTime;
+                let timePart = '';
                 let timeDisplay = rawTime;
                 if (rawTime.includes(' ')) {
                     const timeParts = rawTime.trim().split(/\s+/);
-                    const datePart = timeParts[0] || '';
-                    const timePart = timeParts.slice(1).join(' ') || '';
+                    datePart = timeParts[0] || '';
+                    timePart = timeParts.slice(1).join(' ') || '';
                     timeDisplay = `
                         <div class="flex flex-col gap-0.5 leading-snug">
                             <span class="font-bold text-slate-800 flex items-center gap-1 text-xs whitespace-nowrap">📅 ${datePart}</span>
@@ -14067,7 +14043,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     execIcon = 'fa-user-shield text-amber-600';
                 }
 
-                html += `
+                // 1. Desktop & Tablet Table Row
+                tableHtml += `
                     <tr class="hover:bg-slate-50 transition font-medium">
                         <td class="p-3.5 font-mono text-slate-600 font-bold align-top">${timeDisplay}</td>
                         <td class="p-3.5 align-top">
@@ -14095,8 +14072,42 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         </td>
                     </tr>
                 `;
+
+                // 2. Mobile Responsive Card (Tối ưu vuốt chạm dọc trên điện thoại)
+                cardsHtml += `
+                    <div class="p-3.5 bg-slate-50/70 hover:bg-slate-50 rounded-xl border border-slate-200/90 shadow-2xs space-y-2.5 transition">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <span class="px-2 py-0.5 text-[10px] font-extrabold rounded-md border ${modBadge}">${mod}</span>
+                                <span class="px-2 py-0.5 text-[10px] font-extrabold rounded-full border ${statusBadge} inline-flex items-center gap-1">
+                                    <i class="fa-solid fa-circle-check text-emerald-600 text-[9px]"></i>
+                                    <span>${status}</span>
+                                </span>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-500 font-bold flex items-center gap-1 shrink-0">
+                                <i class="fa-regular fa-clock text-[9.5px]"></i> ${rawTime}
+                            </span>
+                        </div>
+
+                        <div class="space-y-1">
+                            <h4 class="font-extrabold text-slate-900 text-xs leading-snug">${title}</h4>
+                            ${desc ? `<p class="text-[11px] text-slate-600 leading-relaxed">${desc}</p>` : ''}
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-400 text-[10.5px] font-medium">Thực hiện:</span>
+                            <div class="flex items-center gap-1.5 font-extrabold text-slate-800 text-xs">
+                                <i class="fa-solid ${execIcon} text-[11px]"></i>
+                                <span>${primaryExec}</span>
+                                ${subExec ? `<span class="text-[10px] text-slate-500 font-semibold">${subExec}</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
             });
-            tbody.innerHTML = html;
+
+            if (tbody) tbody.innerHTML = tableHtml;
+            if (mobileCards) mobileCards.innerHTML = cardsHtml;
         }
 
         function changeActivityLogPage(delta) {
@@ -14489,16 +14500,6 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // 6. Open parent accordion if it is a sub-link
-            const marketingModules = ['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
-            if (marketingModules.includes(moduleId)) {
-                const accMkt = document.getElementById('acc-marketing');
-                const iconMkt = document.getElementById('icon-acc-marketing');
-                if (accMkt && !accMkt.classList.contains('open')) {
-                    accMkt.classList.add('open');
-                    if (iconMkt) iconMkt.classList.add('rotate-180');
-                }
-            }
-
             if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
                 const acc = document.getElementById('acc-settings');
                 const icon = document.getElementById('icon-acc-settings');
